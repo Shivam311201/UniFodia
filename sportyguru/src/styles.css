@@ -1,0 +1,97 @@
+.body{
+    margin-top: -8px;
+    margin-left: -8px;
+    width: 101.25%;
+    margin-bottom: -8px;
+}
+.NavBackground{
+    background-color: #161D27;
+    color: white;
+    height: 80px;
+}
+.NavTitle{
+    font-family: 'Roboto Slab', serif;
+    font-size: 40px; 
+    font-weight: 600;
+    margin-left: 90px;
+    padding-top: 10px;
+}
+.listBackground{
+    display: flex;
+    justify-content: space-around;
+    background: url(http://i1.cdn-image.com/__media__/pics/12471/bodybg.png);
+    height:max-content;
+}
+.UnivBackground{
+    display: flex;
+    justify-content: space-around;
+    background: url(http://i1.cdn-image.com/__media__/pics/12471/bodybg.png);
+    height:497px;
+}
+.listOuterBox{
+    width:800px;
+    background: url(http://i1.cdn-image.com/__media__/pics/12471/kwbg.jpg);
+    padding-bottom: 20px;
+}
+.listTitle{
+    font-family: 'Roboto Slab', serif;
+    font-size: 35px; 
+    font-weight: 600;
+    margin-left: 90px;
+    padding-top: 10px;
+    margin-bottom: 10px;
+    color: white;  
+}
+.listTitle1{
+    font-family: 'Roboto Slab', serif;
+    font-size: 35px; 
+    font-weight: 600;
+    padding-top: 50px;
+    margin-bottom: 50px;
+    color: white;  
+    text-align: center;
+}
+.arrow{
+    margin-right: 10px;
+}
+.universityName{
+    margin-left: 100px;
+    color: antiquewhite;
+    font-weight: 400;
+    font-family: 'Roboto Slab', serif;
+    font-size: 18px; 
+    margin-top: 7px;
+}
+.universityName:hover{
+    color:darksalmon;
+    cursor: pointer;
+    transition-duration: 0.3s;
+}
+.logo{
+    margin-right: 20px;
+}
+.detailsTitle{
+    color: white;
+    font-family: 'Roboto Slab', serif;
+    margin-left: 100px;
+    margin-bottom: 15px;
+    font-size: 25px;
+    text-decoration: underline;
+}
+.details{
+    color: white;
+    font-family: 'Roboto Slab', serif;
+    display: inline;
+    text-decoration: none;
+    margin-left: 10px;
+    margin-top: 5px;
+    font-size: 20px;
+}
+.linkto{
+    text-decoration: none;
+    color: white;
+}
+.load{
+    text-align: center;
+    margin-top: 230px;
+}
