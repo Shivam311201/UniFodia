@@ -1,15 +1,15 @@
-import React,{useContext, useEffect} from "react";
+import React,{useContext} from "react";
 import { univContext } from "./currentUniv";
 import Navbar from "./NavBar";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCaretRight } from "@fortawesome/free-solid-svg-icons";
 import { Row,Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { dataContext } from "./dataContext";
 function SingleUniv()
 {
     const [univ, setUniv]=useContext(univContext);
-    console.log(univ);
-    console.log(univ);
+    const [data,setData]=useContext(dataContext);
     return (<div className="body">
         <Navbar/>
         <div className="UnivBackground">

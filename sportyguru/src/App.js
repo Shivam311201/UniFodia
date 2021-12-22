@@ -1,14 +1,10 @@
-import React from "react";
-import { UnivProvider } from "./currentUniv";
+import React,{useContext,useState} from "react";
 import { BrowserRouter as Router,Route,Routes } from "react-router-dom";
+import { dataContext } from "./dataContext";
+import { LoadingContext } from "./loadingContext";
 import Home from "./Home";
 import SingleUniv from "./SingleUniv";
-import { LoadingProvider } from "./loadingContext";
-import { DataProvider } from "./dataContext";
-// const initialState={
-//   country:"",
-//   university:[]
-// };
+
 const fetch_data=async()=>
 {
   const url="http://universities.hipolabs.com/search?country=India";
@@ -18,31 +14,20 @@ const fetch_data=async()=>
 
 function App()
 {
-//  const Mymap=new Map();
-  //  ans.map((item)=>{
-  //    const currCountry=item.country;
-  //    initialState.country=item.country;
-  //    initialState.university=[item.name];
-  //    if(Mymap.has(currCountry))
-  //    {
-  //      const arr=Mymap.get(currCountry);
-  //      Mymap.set(currCountry,[...arr,initialState]);
-  //    }
-  //    else Mymap.set(currCountry,[initialState]);
-  //  });
-  return (
-  <UnivProvider>
-  <DataProvider>
-    <LoadingProvider>
-     <Router>
+  const [data,setData]=useContext(dataContext);
+  const [loading,setloading]=useContext(LoadingContext);
+    fetch_data()
+     .then((ans)=>{
+      setData(ans);
+      setloading(false);
+    });
+
+    return (<Router>
        <Routes>
          <Route exact path="/" element={<Home/>}/>
-         <Route exact path="/:id" element={<SingleUniv/>}/>
+         <Route exact path="/:name" element={<SingleUniv/>}/>
        </Routes>
-     </Router>
-    </LoadingProvider>
-    </DataProvider>
-  </UnivProvider>);
+     </Router>);
 }
 
 export default App;
