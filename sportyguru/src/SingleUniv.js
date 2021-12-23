@@ -1,19 +1,28 @@
-import React,{useContext} from "react";
-import { univContext } from "./currentUniv";
+import React,{useContext,useState,useEffect} from "react";
 import Navbar from "./NavBar";
+import { univContext } from "./currentUniv";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCaretRight } from "@fortawesome/free-solid-svg-icons";
 import { Row,Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { dataContext } from "./dataContext";
+
 function SingleUniv()
 {
     const [univ, setUniv]=useContext(univContext);
-    const [data,setData]=useContext(dataContext);
-    return (<div className="body">
+    const [winHeight,setHeight]=useState(window.innerHeight);
+    const [winWidth,setWidth]=useState(window.innerWidth);
+    useEffect(() => {
+        function handleResize() {
+          setHeight(window.innerHeight);
+          setWidth(window.innerWidth);
+    }
+        window.addEventListener('resize', handleResize)
+    });
+
+    return (<div className="body" style={{width:winWidth}}>
         <Navbar/>
-        <div className="UnivBackground">
-        <div className="listOuterBox">
+        <div className="UnivBackground" style={{height:(winHeight-80)}}>
+        <div className="listOuterBox" style={winWidth<=500?{width:winWidth}:{}}>
         <div className="listTitle1">{univ.name}</div>
         <Row style={{display:"flex"}}>
            <Col lg={3} md={3} sm={3} xs={3} className="detailsTitle">
