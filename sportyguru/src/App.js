@@ -5,22 +5,26 @@ import { LoadingContext } from "./loadingContext";
 import Home from "./Home";
 import SingleUniv from "./SingleUniv";
 
-const fetch_data=async()=>
-{
   const url="http://universities.hipolabs.com/search?country=India";
-  const response= await fetch(url);
-  return await response.json();
-}
+  
+  const fetch_data=fetch(url)
+  .then((resposne)=>resposne.json())
+  .then((data)=>{
+    return data;
+  });
 
 function App()
 {
   const [data,setData]=useContext(dataContext);
   const [loading,setloading]=useContext(LoadingContext);
-    fetch_data()
-     .then((ans)=>{
-      setData(ans);
-      setloading(false);
-    });
+
+  const MyData=async()=>
+  {
+    const a=await fetch_data;
+    setData(a);
+    setloading(false);
+  } 
+  MyData();
 
     return (<Router>
        <Routes>

@@ -5,12 +5,22 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCaretRight } from "@fortawesome/free-solid-svg-icons";
 import { Row,Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { dataContext } from "./dataContext";
+import { useParams } from "react-router";
 
 function SingleUniv()
 {
+    const {name}=useParams();
     const [univ, setUniv]=useContext(univContext);
+    const [data, setData]=useContext(dataContext);
     const [winHeight,setHeight]=useState(window.innerHeight);
     const [winWidth,setWidth]=useState(window.innerWidth);
+
+    data?.map((item)=>{
+        if(item.name===name)
+        setUniv(item);
+    });
+
     useEffect(() => {
         function handleResize() {
           setHeight(window.innerHeight);
@@ -29,8 +39,8 @@ function SingleUniv()
            <FontAwesomeIcon icon={faCaretRight} size="md" className="arrow"/>Website:
            </Col> 
            <Col lg={9} md={9} sm={9} xs={9} className="details">
-               {univ.web_pages.map((item,key)=>(
-                   <div id={key}>{univ.web_pages.length>1?key+1+") ":""}<Link className="linkto" to={item}>{item}</Link></div>
+               {univ?.web_pages?.map((item,key)=>(
+                   <div key={key}>{univ.web_pages.length>1?key+1+") ":""}<Link className="linkto" to={item}>{item}</Link></div>
                ))}
            </Col> 
         </Row>
@@ -63,8 +73,8 @@ function SingleUniv()
            <FontAwesomeIcon icon={faCaretRight} size="md" className="arrow"/>Domains:
            </Col> 
            <Col lg={9} md={9} sm={9} xs={9} className="details">
-               {univ.domains.map((item,key)=>(
-                   <div id={key}>{univ.web_pages.length>1?key+1+") ":""}{item}</div>
+               {univ?.domains?.map((item,key)=>(
+                   <div key={key}>{univ.web_pages.length>1?key+1+") ":""}{item}</div>
                ))}
            </Col> 
         </Row>

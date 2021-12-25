@@ -17,7 +17,7 @@ function List(props) {
     <FontAwesomeIcon icon={faCaretRight} size="lg" className="arrow"/>India</div>
     <div>
     {props.data.map((item,key)=>(
-      <div id={key} className="universityName" onClick={()=>setList(item)}>- {item.name}</div>
+      <div key={key} className="universityName" onClick={()=>setList(item)}>- {item.name}</div>
     ))}
     </div>
     </div>);

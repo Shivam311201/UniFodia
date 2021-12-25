@@ -4,7 +4,7 @@ export const dataContext = createContext();
 
 export function DataProvider({ children }) {
 
-  const [data, setData] = useState({});
+  const [data, setData] = useState([]);
 
   return (
     <dataContext.Provider value={[data, setData]}>
