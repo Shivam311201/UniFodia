@@ -3,16 +3,19 @@ import Navbar from "./NavBar";
 import { univContext } from "./currentUniv";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCaretRight } from "@fortawesome/free-solid-svg-icons";
+import { LoadingContext } from "./loadingContext";
 import { Row,Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { dataContext } from "./dataContext";
 import { useParams } from "react-router";
+import { CircularProgress } from "@material-ui/core";
 
 function SingleUniv()
 {
     const {name}=useParams();
     const [univ, setUniv]=useContext(univContext);
     const [data, setData]=useContext(dataContext);
+    const [loading,setloading]=useContext(LoadingContext);
     const [winHeight,setHeight]=useState(window.innerHeight);
     const [winWidth,setWidth]=useState(window.innerWidth);
 
@@ -33,6 +36,8 @@ function SingleUniv()
         <Navbar/>
         <div className="UnivBackground" style={{height:(winHeight-80)}}>
         <div className="listOuterBox" style={winWidth<=500?{width:winWidth}:{}}>
+        {loading&&<div className="load"><CircularProgress size="6rem"/></div>}
+        {!loading&&<div>
         <div className="listTitle1">{univ.name}</div>
         <Row style={{display:"flex"}}>
            <Col lg={3} md={3} sm={3} xs={3} className="detailsTitle">
@@ -78,6 +83,7 @@ function SingleUniv()
                ))}
            </Col> 
         </Row>
+        </div>}
         </div>
         </div>
     </div>)
